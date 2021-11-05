@@ -1,23 +1,29 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import { inventoryData } from './data';
+import Inventory from './features/inventory/Inventory';
+import Cart from './features/cart/Cart';
+import CurrencyFilter from './features/currencyFilter/CurrencyFilter';
 
-function App() {
+function App(props) {
+
+  const {state, dispatch} = props
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CurrencyFilter
+        currencyFilter = {state.currencyFilter}
+        dispatch = {dispatch}
+      />
+      <Inventory
+        inventory = {state.inventory}
+        currencyFilter = {state.currencyFilter}
+        dispatch= {dispatch}
+      />
+      <Cart
+        cart = {state.cart}
+        currencyFilter = {state.currencyFilter}
+        dispatch= {dispatch}
+      />
     </div>
   );
 }
