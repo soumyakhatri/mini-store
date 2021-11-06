@@ -22,6 +22,7 @@ function CurrencyFilter(props) {
     }
     return (
         <div>
+            <h3>Set Currency To</h3>
             {currenciesData.map(createCurrencyButtons)}
         </div>
     )

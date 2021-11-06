@@ -35,6 +35,13 @@ export const convertToOtherCurrency = (price, currencyFilter) => {
             }
             return price
         }
+        case 'INR': {
+            if(price>0){
+                price = (price * 74.19).toFixed(2);
+                return price;
+            }
+            return price
+        }
             break;
 
         default:
@@ -47,6 +54,10 @@ export const currencySymbol = (currencyFilter) => {
     switch (currencyFilter) {
         case 'EUR':
             return '€'
+
+            break;
+        case 'INR':
+            return '₹'
 
             break;
 

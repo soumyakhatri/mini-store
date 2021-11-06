@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { addItem } from '../../../../mini-store-self/src/features/cart/cartSlice'
-import { convertToOtherCurrency, currencySymbol } from '../utilities/utilities'
+import { convertToOtherCurrency, currencySymbol, filterInventory } from '../utilities/utilities'
 import { loadData } from './inventorySlice'
 
-function Inventory({ inventory, currencyFilter, dispatch }) {
+function Inventory({ inventory, currencyFilter, searchTerm, dispatch }) {
     const onMount = () => {
         dispatch(loadData())
     }
@@ -12,7 +12,7 @@ function Inventory({ inventory, currencyFilter, dispatch }) {
     const onClickHandler = (inventoryItem) => {
         dispatch(addItem(inventoryItem))
     }
-    
+
 
     const createInventoryItem = (inventoryItem) => {
         const { name, img, price } = inventoryItem
@@ -25,11 +25,11 @@ function Inventory({ inventory, currencyFilter, dispatch }) {
                     onClick={() => onClickHandler(inventoryItem)}
                     className="add-to-cart-button"
                 >
-                 Add to cart
+                    Add to cart
                 </button>
             </li>
         )
-    }
+    }   
 
     // if (inventory.length === 0) {
     //     return <p>Sorry, no products are currently available...</p>
